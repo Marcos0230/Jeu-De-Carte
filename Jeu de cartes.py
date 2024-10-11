@@ -1,3 +1,5 @@
+
+
 """
 Demande à l'user l'animal restant dans le tuple parmis la liste.
 Insérer l'animal dans la liste d'affichage finale, puis comparer de gauche à droite (si plus grand, stop boucle car bon endroit.).
@@ -25,7 +27,7 @@ def tri(animaux,cardline):
     """
     Cette fonction trie et ajoute un animal que l'utilisateur à décidé à la cardline
     """
-    choix = user_input(animaux)                        #Nombre entre 1 et 5
+    choix = user_input(animaux)                        #Nombre entre 1 et 4
     animal = animaux[choix - 1]      #Définit la variable animal              
     for compteur in range(len(animaux)):                                 #Parcourt la liste animaux
         if animal[1] > animaux[compteur][1]:                        # Si l'élément espérance de vie de l'animal est supérieure à l'élément espérence de vie de l'animal dans la liste animaux 
@@ -52,11 +54,10 @@ def user_input(animaux):
     for anim in animaux:
         print(compteur_ani,anim[0])
         compteur_ani += 1
-    choix = int(input("Renseigner l'animal choisit grâce au nombre qui lui est associé : "))
-    if not(1 <= choix <= len(animaux) + 1):                                     #Si choix n'est pas un nombre entre 1 et la longueur maximale de la liste animaux incluses, on rentre dans la boucle
-        print("Ce n'est pas l'un des animaux")
-        user_input(animaux)                                          #Rappel de la fonction user_input
-    else:
-        return choix                #Renvoie la variable choix 
+    choix = input("\nRenseigner l'animal choisit grâce au nombre qui lui est associé : ")
+    while not choix.isdigit():
+        choix = input("Veuillez renvoyer un nombre valide.\nRenseigner l'animal choisit grâce au nombre qui lui est associé : ")
+    choix= int(choix)
+    return choix                #Renvoie la variable choix 
         
 jeu(animaux)
