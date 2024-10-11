@@ -17,8 +17,8 @@ def jeu(animaux):
     print(cardline)
     del(animaux[anidepart])
     while animaux != [] :
-        
         tri(animaux,cardline)
+    print("fini")
         
 
 
@@ -30,12 +30,15 @@ def tri(animaux,cardline):
     animal = animaux[choix - 1]              #Définit la variable animal              
     for compteur in range(len(animaux)):                                 #Parcourt la liste animaux
         if animal[1] > animaux[compteur][1]:                        # Si l'élément espérance de vie de l'animal est supérieure à l'élément espérence de vie de l'animal dans la liste animaux 
-            cardline.insert(compteur, animal)                       
+            cardline.insert(compteur, animal)   
+            del(animaux[choix -1])
+            print(cardline)
+            return animaux,cardline                    
         elif compteur+1 == len(animaux):
             cardline.append(animal)                          #Ajoute l'animal à la cardline
             del(animaux[choix -1])                            #Supprime l'animal de la liste d'animaux
-    print(cardline)
-    return animaux,cardline
+            print(cardline)
+            return animaux,cardline
 
 def user_input(animaux):
     """
@@ -56,6 +59,3 @@ def user_input(animaux):
         return choix                #Renvoie la variable choix 
         
 jeu(animaux)
-
-
-#Problèmes actuels : -Il faudrait utiliser une boucle while au lieu d'une boucle for dans la fonction tri(), sinon ajout de l'animal 3x ou plus dans la cardline
