@@ -21,13 +21,12 @@ def jeu(animaux):
     print("fini")
         
 
-
 def tri(animaux,cardline):
     """
     Cette fonction trie et ajoute un animal que l'utilisateur à décidé à la cardline
     """
     choix = user_input(animaux)                        #Nombre entre 1 et 5
-    animal = animaux[choix - 1]              #Définit la variable animal              
+    animal = animaux[choix - 1]      #Définit la variable animal              
     for compteur in range(len(animaux)):                                 #Parcourt la liste animaux
         if animal[1] > animaux[compteur][1]:                        # Si l'élément espérance de vie de l'animal est supérieure à l'élément espérence de vie de l'animal dans la liste animaux 
             cardline.insert(compteur, animal)   
@@ -39,6 +38,8 @@ def tri(animaux,cardline):
             del(animaux[choix -1])                            #Supprime l'animal de la liste d'animaux
             print(cardline)
             return animaux,cardline
+        else:
+            None        
 
 def user_input(animaux):
     """
@@ -46,12 +47,12 @@ def user_input(animaux):
     Entree : Choix de l'animal dans la liste
     Sortie : tuple (animal)                                     
     """
-    print("Voici les animaux disponibles")
+    print("Voici les animaux disponibles : ")
     compteur_ani = 1                            #La variable compteur_ani et la boucle for servent uniquement à l'affichage
     for anim in animaux:
         print(compteur_ani,anim[0])
         compteur_ani += 1
-    choix = int(input("Renseigner l'animal choisit grâce au nombre qui lui est associé"))
+    choix = int(input("Renseigner l'animal choisit grâce au nombre qui lui est associé : "))
     if not(1 <= choix <= len(animaux) + 1):                                     #Si choix n'est pas un nombre entre 1 et la longueur maximale de la liste animaux incluses, on rentre dans la boucle
         print("Ce n'est pas l'un des animaux")
         user_input(animaux)                                          #Rappel de la fonction user_input
