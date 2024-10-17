@@ -29,7 +29,7 @@ def tri(animaux,cardline):
     animal = animaux[choix - 1]      #Définit la variable animal  
     lenanimauxsave = len(animaux) 
     position = 0         
-    while animal[1] < cardline[position][1] and position+1 < len(cardline):
+    while position < len(cardline) and animal[1] < cardline[position][1] :  # tant que cardine n'ai pas vide et comparaison vrai
         position += 1
     cardline.insert(position, animal)   
     del(animaux[choix -1])    
